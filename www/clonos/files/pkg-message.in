@@ -1,6 +1,12 @@
 Post Installation:
 
-* Init CBSD workdir first!
+* Check for RACCT is enabled on the host, please add :
+
+  kern.racct.enable="1"
+
+  into /boot/loader.conf and reboot host
+
+* Init CBSD workdir
 
   See https://www.bsdstore.ru/en/installing_cbsd.html#initenv for details
 
@@ -103,6 +109,25 @@ Post Installation:
   3) Init web user database:
 
     sh /usr/local/cbsd/modules/forms.d/clonos_database/initforms.sh
+
+  4) Configure and run CBSD RACCT stats daemon:
+
+    sysrc cbsd_statsd_hoster_enable=YES
+    sysrc cbsd_statsd_jail_enable=YES
+    sysrc cbsd_statsd_bhyve_enable=YES
+    service cbsd-statsd-hoster status || service cbsd-statsd-hoster start
+    service cbsd-statsd-jail status || service cbsd-statsd-jail start
+    service cbsd-statsd-bhyve status || service cbsd-statsd-bhyve start
+
+* Configure and run beanstalkd:
+
+  1)
+     sysrc beanstalkd_flags="-l 127.0.0.1 -p 11300"
+     sysrc beanstalkd_enable=YES
+
+  2)
+     service beanstalkd status || service beanstalkd start
+
 
 * Open the main ClonOS directory in your web browser.
 

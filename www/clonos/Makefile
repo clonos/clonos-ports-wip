@@ -28,7 +28,8 @@ RUN_DEPENDS=	bash:shells/bash \
 		${LOCALBASE}/bin/clonos-ws:sysutils/clonos-ws \
 		node:www/node \
 		sudo:security/sudo \
-		sqlite3:databases/sqlite3
+		sqlite3:databases/sqlite3 \
+		beanstalkd:net/beanstalkd
 
 USES=		php python
 
