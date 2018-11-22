@@ -1,0 +1,113 @@
+Post Installation:
+
+* Init CBSD workdir first!
+
+  See https://www.bsdstore.ru/en/installing_cbsd.html#initenv for details
+
+* Ensure CBSD is started:
+
+  sysrc cbsdd_enable=YES
+  service cbsdd status || service cbsdd start
+
+* active/init settings in ~cbsd/etc/vm_vncwss.conf:
+
+  daemon_user="www"
+  supervisor_command="/usr/local/bin/bash %%WWWDIR%%/public/novnc/utils/launch.sh"
+  supervisor_directory="%%WWWDIR%%/public/novnc"
+
+* Change in /usr/local/etc/php-fpm.conf events mechanism to BSD-specific.
+  To do this, uncomment and edit the events.mechanism parameter to:
+  vi /usr/local/etc/php-fpm.conf:
+
+    ..
+    events.mechanism = kqueue
+    ..
+
+  Or copy: cp %%PREFIX%%/etc/www-php-fpm.conf.clonos.sample %%PREFIX%%/etc/php-fpm.conf
+
+* Uncomment and change in /usr/local/etc/php-fpm.d/www.conf port to Unix socket and
+  set's correct access permission:
+
+    ..
+    listen = /tmp/php-fpm.sock
+    ..
+    listen.backlog = -1
+    ..
+    listen.owner = www
+    listen.group = www
+    listen.mode = 0660
+    ..
+
+  Or copy: cp %%PREFIX%%/etc/www-php-fpm.conf.clonos.sample %%PREFIX%%/etc/php-fpm.d/www.conf
+
+* Add "www" user to "cbsd" group: 
+
+    pw groupmod cbsd -M www
+
+* To execute CBSD commands, let the www user run CBSD through sudo:
+  edit /usr/local/etc/sudoers.d/10_www:
+
+    Defaults     env_keep += "workdir DIALOG NOCOLOR"
+    Cmnd_Alias   WEB_CMD = /usr/local/bin/cbsd
+    www   ALL=(ALL) NOPASSWD: WEB_CMD
+
+  And make sure the file permissions are safe:
+
+    chown root:wheel /usr/local/etc/sudoers.d/10_www
+    chmod 0440 /usr/local/etc/sudoers.d/10_www
+
+  Or copy: cp %%PREFIX%%/etc/sudoers_10_www.clonos.sample %%PREFIX%%/etc/sudoers.d/10_www
+
+* Copy supervisord config file
+
+  Or copy: cp %%PREFIX%%/etc/supervisord.conf.clonos.sample %%PREFIX%%/etc/supervisord.conf
+
+* Copy php.ini file
+
+  Or copy: cp %%PREFIX%%/etc/php.ini.clonos.sample %%PREFIX%%/etc/php.ini
+
+* Configure NGINX: copy or merge sample from
+  %%PREFIX%%/etc/nginx/nginx.conf.clonos.sample
+  into /usr/local/etc/nginx/nginx.conf, e.g:
+
+  cp %%PREFIX%%/etc/nginx/nginx.conf.clonos.sample %%PREFIX%%/etc/nginx/nginx.conf
+
+* Enable nginx, php-fpm and supervisord to run at system startup:
+
+   sysrc nginx_enable="YES"
+   sysrc php_fpm_enable="YES"
+   sysrc supervisord_enable="YES"
+
+* Start nginx, php-fpm and supervisord to run at system startup:
+
+   service nginx start
+   service php-fpm start
+   service supervisord start
+
+* Configure CBSD:
+
+  1)
+     ~cbsd/etc/modules.conf must have:
+
+    pkg.d
+    bsdconf.d
+    zfsinstall.d
+    puppet.d
+    convectix.d
+    cbsd_queue.d
+
+  2) Re-run CBSD initenv to init modules:
+
+    cbsd initenv
+
+  3) Init web user database:
+
+    sh /usr/local/cbsd/modules/forms.d/clonos_database/initforms.sh
+
+* Open the main ClonOS directory in your web browser.
+
+  Default login: 'admin', default password: 'admin'
+
+
+* Enjoy the ClonOS !
+
