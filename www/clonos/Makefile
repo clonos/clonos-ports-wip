@@ -1,9 +1,9 @@
 # $FreeBSD:$
 
 PORTNAME=	clonos
-PORTVERSION=	0.1
+PORTVERSION=	18.12
 CATEGORIES=	www
-GTAG=		142351d
+GTAG=		908eaa7
 DISTNAME=	cp-${GTAG}
 
 MAINTAINER=	olevole@olevole.ru
@@ -77,6 +77,9 @@ post-install:
 
 	${INSTALL_DATA} ${WRKDIR}/cp-${GTAG}/examples/program_ws.conf.sample \
 		${STAGEDIR}${PREFIX}/etc/supervisor.d/program_ws.conf.clonos.sample
+
+	${INSTALL_DATA} ${WRKDIR}/cp-${GTAG}/examples/program_wsclonos.conf.sample \
+		${STAGEDIR}${PREFIX}/etc/supervisor.d/program_wsclonos.conf.clonos.sample
 
 	${INSTALL_DATA} ${WRKDIR}/cp-${GTAG}/examples/supervisord.conf.sample \
 		${STAGEDIR}${PREFIX}/etc/supervisord.conf.clonos.sample
