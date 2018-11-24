@@ -60,6 +60,7 @@ post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/nginx/streams-enabled
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/nginx/conf.stream.d
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/nginx/sites-enabled
+	${MKDIR} ${STAGEDIR}${PREFIX}/etc/php-fpm.d
 	${MKDIR} /var/log/nginx ${STAGEDIR}${PREFIX}/etc/nginx/streams-enabled ${STAGEDIR}${PREFIX}/etc/nginx/sites-enabled
 	${INSTALL_DATA} ${WRKDIR}/cp-${GTAG}/examples/nginx.conf.sample \
 		${STAGEDIR}${PREFIX}/etc/nginx/nginx.conf.clonos.sample
@@ -88,7 +89,7 @@ post-install:
 		${STAGEDIR}${PREFIX}/etc/php.ini.clonos.sample
 
 	${INSTALL_DATA} ${WRKDIR}/cp-${GTAG}/examples/www-php-fpm.conf.sample \
-		${STAGEDIR}${PREFIX}/etc/www-php-fpm.conf.clonos.sample
+		${STAGEDIR}${PREFIX}/etc/php-fpm.d/www-php-fpm.conf.clonos.sample
 
 	@${ECHO_CMD} "@owner ${WWWOWN}" >> ${TMPPLIST}
 	@${ECHO_CMD} "@group ${WWWGRP}" >> ${TMPPLIST}
@@ -103,10 +104,11 @@ post-install:
 	@${ECHO_CMD} "@sample etc/nginx/nginx.conf.clonos.sample etc/nginx/nginx.conf" >> ${TMPPLIST}
 	@${ECHO_CMD} "@sample etc/nginx/sites-enabled/cbsdweb.conf.clonos.sample etc/nginx/sites-enabled/cbsdweb.conf" >> ${TMPPLIST}
 	@${ECHO_CMD} "@sample etc/sudoers_10_www.clonos.sample etc/sudoers.d/10_www" >> ${TMPPLIST}
-	@${ECHO_CMD} "@sample etc/supervisor.d/program_vnc2wss.conf.clonos.sample etc/supervisor.d/program_vnc2wss.conf.sample" >> ${TMPPLIST}
-	@${ECHO_CMD} "@sample etc/supervisor.d/program_ws.conf.clonos.sample etc/supervisor.d/program_ws.conf.sample" >> ${TMPPLIST}
+	@${ECHO_CMD} "@sample etc/supervisor.d/program_vnc2wss.conf.clonos.sample etc/supervisor.d/program_vnc2wss.conf" >> ${TMPPLIST}
+	@${ECHO_CMD} "@sample etc/supervisor.d/program_ws.conf.clonos.sample etc/supervisor.d/program_ws.conf" >> ${TMPPLIST}
+	@${ECHO_CMD} "@sample etc/supervisor.d/program_wsclonos.conf.clonos.sample etc/supervisor.d/program_wsclonos.conf" >> ${TMPPLIST}
 	@${ECHO_CMD} "@sample etc/supervisord.conf.clonos.sample etc/supervisord.conf.sample" >> ${TMPPLIST}
 	@${ECHO_CMD} "@sample etc/php.ini.clonos.sample etc/php.ini.sample" >> ${TMPPLIST}
-	@${ECHO_CMD} "@sample etc/www-php-fpm.conf.clonos.sample etc/php-fpm.d/www.conf.sample" >> ${TMPPLIST}
+	@${ECHO_CMD} "@sample etc/php-fpm.d/www-php-fpm.conf.clonos.sample etc/php-fpm.d/www.conf.sample" >> ${TMPPLIST}
 
 .include <bsd.port.mk>

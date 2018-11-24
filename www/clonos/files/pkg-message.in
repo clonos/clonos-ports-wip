@@ -86,9 +86,9 @@ Post Installation:
 
 * Start nginx, php-fpm and supervisord to run at system startup:
 
-   service nginx start
-   service php-fpm start
-   service supervisord start
+   service nginx restart
+   service php-fpm restart
+   service supervisord restart
 
 * Configure CBSD:
 
@@ -115,19 +115,16 @@ Post Installation:
     sysrc cbsd_statsd_hoster_enable=YES
     sysrc cbsd_statsd_jail_enable=YES
     sysrc cbsd_statsd_bhyve_enable=YES
-    service cbsd-statsd-hoster status || service cbsd-statsd-hoster start
-    service cbsd-statsd-jail status || service cbsd-statsd-jail start
-    service cbsd-statsd-bhyve status || service cbsd-statsd-bhyve start
+    service cbsd-statsd-hoster restart
+    service cbsd-statsd-jail restart
+    service cbsd-statsd-bhyve restart
 
 * Configure and run beanstalkd:
 
   1)
      sysrc beanstalkd_flags="-l 127.0.0.1 -p 11300"
      sysrc beanstalkd_enable=YES
-
-  2)
-     service beanstalkd status || service beanstalkd start
-
+     service beanstalkd restart
 
 * Open the main ClonOS directory in your web browser.
 
@@ -135,4 +132,3 @@ Post Installation:
 
 
 * Enjoy the ClonOS !
-
