@@ -3,7 +3,7 @@
 PORTNAME=	clonos
 PORTVERSION=	18.12
 CATEGORIES=	www
-GTAG=		908eaa7
+GTAG=		bd2b19e
 DISTNAME=	cp-${GTAG}
 
 MAINTAINER=	olevole@olevole.ru
@@ -51,8 +51,12 @@ do-install:
 	@${MKDIR} ${STAGEDIR}/var/db/clonos
 	@${MKDIR} -p ${STAGEDIR}/usr/local/etc/nginx/streams-enabled
 	@${MKDIR} -p ${STAGEDIR}/usr/local/etc/nginx/sites-enabled/
+	${CP} -a ${WRKDIR}/cp-${GTAG}/logs ${STAGEDIR}${WWWDIR}
+	${CP} -a ${WRKDIR}/cp-${GTAG}/node ${STAGEDIR}${WWWDIR}
+	${CP} -a ${WRKDIR}/cp-${GTAG}/media_import ${STAGEDIR}${WWWDIR}
 	${CP} -a ${WRKDIR}/cp-${GTAG}/php ${STAGEDIR}${WWWDIR}
 	${CP} -a ${WRKDIR}/cp-${GTAG}/public ${STAGEDIR}${WWWDIR}
+	${CHOWN} -R ${WWWOWN}:${WWWGRP} ${STAGEDIR}${WWWDIR}/public/novnc
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/supervisor.d /var/log/supervisor
@@ -91,6 +95,12 @@ post-install:
 	${INSTALL_DATA} ${WRKDIR}/cp-${GTAG}/examples/www-php-fpm.conf.sample \
 		${STAGEDIR}${PREFIX}/etc/php-fpm.d/www-php-fpm.conf.clonos.sample
 
+	${INSTALL_DATA} ${WRKDIR}/cp-${GTAG}/examples/php-fpm.conf.sample \
+		${STAGEDIR}${PREFIX}/etc/php-fpm.conf.clonos.sample
+
+	${INSTALL_DATA} ${WRKDIR}/cp-${GTAG}/examples/cbsd-modules.conf.sample \
+		${STAGEDIR}${PREFIX}/etc/cbsd-modules.conf.clonos.sample
+
 	@${ECHO_CMD} "@owner ${WWWOWN}" >> ${TMPPLIST}
 	@${ECHO_CMD} "@group ${WWWGRP}" >> ${TMPPLIST}
 	@${FIND} -s ${STAGEDIR}${WWWDIR} -not -type d | ${SORT} | \
@@ -107,8 +117,13 @@ post-install:
 	@${ECHO_CMD} "@sample etc/supervisor.d/program_vnc2wss.conf.clonos.sample etc/supervisor.d/program_vnc2wss.conf" >> ${TMPPLIST}
 	@${ECHO_CMD} "@sample etc/supervisor.d/program_ws.conf.clonos.sample etc/supervisor.d/program_ws.conf" >> ${TMPPLIST}
 	@${ECHO_CMD} "@sample etc/supervisor.d/program_wsclonos.conf.clonos.sample etc/supervisor.d/program_wsclonos.conf" >> ${TMPPLIST}
-	@${ECHO_CMD} "@sample etc/supervisord.conf.clonos.sample etc/supervisord.conf.sample" >> ${TMPPLIST}
-	@${ECHO_CMD} "@sample etc/php.ini.clonos.sample etc/php.ini.sample" >> ${TMPPLIST}
-	@${ECHO_CMD} "@sample etc/php-fpm.d/www-php-fpm.conf.clonos.sample etc/php-fpm.d/www.conf.sample" >> ${TMPPLIST}
+	@${ECHO_CMD} "@sample etc/supervisord.conf.clonos.sample etc/supervisord.conf" >> ${TMPPLIST}
+	@${ECHO_CMD} "@sample etc/php.ini.clonos.sample etc/php.ini" >> ${TMPPLIST}
+	@${ECHO_CMD} "@sample etc/php-fpm.conf.clonos.sample etc/php-fpm.conf" >> ${TMPPLIST}
+	@${ECHO_CMD} "@sample etc/cbsd-modules.conf.clonos.sample" >> ${TMPPLIST}
+	@${ECHO_CMD} "@sample etc/php-fpm.d/www-php-fpm.conf.clonos.sample etc/php-fpm.d/www.conf" >> ${TMPPLIST}
+	@${ECHO_CMD} "@dir(${WWWOWN},${WWWGRP},) ${WWWDIR}/public/novnc" >> ${TMPPLIST}
+	@${ECHO_CMD} "@dir(${WWWOWN},${WWWGRP},) ${WWWDIR}/public/novnc/utils" >> ${TMPPLIST}
+
 
 .include <bsd.port.mk>
