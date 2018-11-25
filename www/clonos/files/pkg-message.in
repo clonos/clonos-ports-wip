@@ -153,6 +153,7 @@ zfsinstall.d
 puppet.d
 convectix.d
 cbsd_queue.d
+vncterm.d
 
     Or copy: cp %%PREFIX%%/etc/cbsd-modules.conf.clonos.sample ~cbsd/etc/modules.conf
 
