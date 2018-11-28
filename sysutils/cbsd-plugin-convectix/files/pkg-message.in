@@ -1,0 +1,3 @@
+Post Installation:
+
+* Please add 'convectix.d' into ~cbsd/etc/modules.conf to enable convectix plugin

@@ -1,0 +1,3 @@
+Post Installation:
+
+* Please add 'puppet.d' into ~cbsd/etc/modules.conf to enable puppet plugin

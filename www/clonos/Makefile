@@ -25,6 +25,8 @@ RUN_DEPENDS=	bash:shells/bash \
 		${LOCALBASE}/cbsd/modules/cbsd_queue.d/wsclonos-sendqueue:sysutils/cbsd-plugin-wsqueue \
 		${LOCALBASE}/cbsd/modules/forms.d/clonos_database/initforms.sh:sysutils/cbsd-plugin-clonos-database \
 		${LOCALBASE}/cbsd/modules/vncterm.d/vncterm:sysutils/cbsd-plugin-vncterm \
+		${LOCALBASE}/cbsd/modules/convectix.d/securecmd:sysutils/cbsd-plugin-convectix \
+		${LOCALBASE}/cbsd/modules/puppet.d/puppet:sysutils/cbsd-plugin-puppet \
 		${LOCALBASE}/bin/clonos-ws:sysutils/clonos-ws \
 		node:www/node \
 		sudo:security/sudo \
@@ -124,6 +126,5 @@ post-install:
 	@${ECHO_CMD} "@sample etc/php-fpm.d/www-php-fpm.conf.clonos.sample etc/php-fpm.d/www.conf" >> ${TMPPLIST}
 	@${ECHO_CMD} "@dir(${WWWOWN},${WWWGRP},) ${WWWDIR}/public/novnc" >> ${TMPPLIST}
 	@${ECHO_CMD} "@dir(${WWWOWN},${WWWGRP},) ${WWWDIR}/public/novnc/utils" >> ${TMPPLIST}
-
 
 .include <bsd.port.mk>
