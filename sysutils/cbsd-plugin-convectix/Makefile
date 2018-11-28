@@ -15,7 +15,7 @@ RUN_DEPENDS=	cbsd:sysutils/cbsd \
 SUB_FILES=	pkg-message
 
 USE_GITHUB=	yes
-GH_TAGNAME=	6b60d9a
+GH_TAGNAME=	407799e
 GH_ACCOUNT=	cbsd
 GH_PROJECT=	cbsd-plugin-convectix
 
