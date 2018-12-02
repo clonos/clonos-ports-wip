@@ -21,12 +21,6 @@ sysrc beanstalkd_flags="-l 127.0.0.1 -p 11300"
 sysrc beanstalkd_enable=YES
 service beanstalkd restart
 
-[*] Active/init settings in ~cbsd/etc/vm_vncwss.conf:
-
-daemon_user="www"
-supervisor_command="%%PREFIX%%/bin/bash %%WWWDIR%%/public/novnc/utils/launch.sh"
-supervisor_directory="%%WWWDIR%%/public/novnc"
-
 [*] Change in %%PREFIX%%/etc/php-fpm.conf events mechanism to BSD-specific.
     To do this, uncomment and edit the events.mechanism parameter to:
     vi %%PREFIX%%/etc/php-fpm.conf:
