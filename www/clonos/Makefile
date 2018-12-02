@@ -3,7 +3,7 @@
 PORTNAME=	clonos
 PORTVERSION=	18.12
 CATEGORIES=	www
-GTAG=		04c3ce3
+GTAG=		f1b47de
 DISTNAME=	cp-${GTAG}
 
 MAINTAINER=	olevole@olevole.ru
@@ -27,6 +27,8 @@ RUN_DEPENDS=	bash:shells/bash \
 		${LOCALBASE}/cbsd/modules/vncterm.d/vncterm:sysutils/cbsd-plugin-vncterm \
 		${LOCALBASE}/cbsd/modules/convectix.d/securecmd:sysutils/cbsd-plugin-convectix \
 		${LOCALBASE}/cbsd/modules/puppet.d/puppet:sysutils/cbsd-plugin-puppet \
+		${LOCALBASE}/cbsd/modules/forms.d/memcached/initforms.sh:sysutils/cbsd-plugin-forms-memcached \
+		${LOCALBASE}/cbsd/modules/forms.d/redis/initforms.sh:sysutils/cbsd-plugin-forms-redis \
 		${LOCALBASE}/bin/clonos-ws:sysutils/clonos-ws \
 		node:www/node \
 		sudo:security/sudo \

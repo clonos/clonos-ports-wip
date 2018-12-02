@@ -9,8 +9,7 @@ COMMENT=	CBSD WEB UI
 
 LICENSE=	BSD
 
-RUN_DEPENDS=	cbsd:sysutils/cbsd \
-		sqlite3:databases/sqlite3
+RUN_DEPENDS=	cbsd:sysutils/cbsd
 
 SUB_FILES=	pkg-message
 

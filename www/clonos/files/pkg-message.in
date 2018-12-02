@@ -103,7 +103,11 @@ files=%%PREFIX%%/etc/supervisor.d/*.conf
 ..
 memory_limit = 256M
 ..
+post_max_size = 12G
+..
 upload_tmp_dir = /tmp
+..
+upload_max_filesize = 16G
 ..
 opcache.enable=1
 

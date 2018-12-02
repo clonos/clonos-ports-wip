@@ -1,6 +1,6 @@
 # $FreeBSD:$
 
-PORTNAME=	cbsd-plugin-puppet
+PORTNAME=	cbsd-plugin-forms-memcached
 PORTVERSION=	0.1
 CATEGORIES=	sysutils
 
@@ -11,16 +11,14 @@ LICENSE=	BSD
 
 RUN_DEPENDS=	cbsd:sysutils/cbsd
 
-SUB_FILES=	pkg-message
-
 USE_GITHUB=	yes
-GH_TAGNAME=	cdda637
+GH_TAGNAME=	6f41fc9
 GH_ACCOUNT=	cbsd
-GH_PROJECT=	cbsd-plugin-puppet
+GH_PROJECT=	cbsd-plugin-forms-memcached
 
 NO_BUILD=	yes
 NO_ARCH=	yes
-TARGET_DIR=	${PREFIX}/cbsd/modules/puppet.d
+TARGET_DIR=	${PREFIX}/cbsd/modules/forms.d/memcached
 
 do-install:
 	${MKDIR} ${STAGEDIR}${TARGET_DIR}
