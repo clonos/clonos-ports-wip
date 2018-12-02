@@ -172,7 +172,7 @@ service cbsd-statsd-hoster restart
 service cbsd-statsd-jail restart
 service cbsd-statsd-bhyve restart
 
-[*] Open the main ClonOS directory in your web browser.
+[*] Open the ClonOS UI in your web browser.
 
   Default login: 'admin', default password: 'admin'
 
