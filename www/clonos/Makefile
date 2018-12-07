@@ -29,6 +29,7 @@ RUN_DEPENDS=	bash:shells/bash \
 		${LOCALBASE}/cbsd/modules/puppet.d/puppet:sysutils/cbsd-plugin-puppet \
 		${LOCALBASE}/cbsd/modules/forms.d/memcached/initforms.sh:sysutils/cbsd-plugin-forms-memcached \
 		${LOCALBASE}/cbsd/modules/forms.d/redis/initforms.sh:sysutils/cbsd-plugin-forms-redis \
+		${LOCALBASE}/cbsd/modules/forms.d/php/initforms.sh:sysutils/cbsd-plugin-forms-php \
 		${LOCALBASE}/bin/clonos-ws:sysutils/clonos-ws \
 		node:www/node \
 		sudo:security/sudo \
