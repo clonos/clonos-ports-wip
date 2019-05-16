@@ -128,6 +128,12 @@ stream {
 
     Or copy: cp %%PREFIX%%/etc/nginx/nginx.conf.clonos.sample %%PREFIX%%/etc/nginx/nginx.conf
 
+[*] Make sure %%PREFIX%%/etc/nginx/sites-enabled/cbsdweb.conf
+    have correct path to CBSD workdir. Please check that line "fastcgi_param WORKDIR.."
+    in %%PREFIX%%/etc/nginx/sites-enabled/cbsdweb.conf pointed to ~cbsd path:
+
+    fastcgi_param WORKDIR /usr/jails;
+                          ^^^^^^^^^^
 [*] Enable nginx, php-fpm and supervisord to run at system startup:
 
 sysrc nginx_enable="YES"
