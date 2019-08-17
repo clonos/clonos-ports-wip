@@ -3,8 +3,8 @@
 PORTNAME=	clonos
 PORTVERSION=	19.01
 CATEGORIES=	www
-GTAG=		b452db9
-DISTNAME=	cp-${GTAG}
+GTAG=		a2d5062
+DISTNAME=	control-pane-${GTAG}
 
 MAINTAINER=	olevole@olevole.ru
 COMMENT=	CBSD WEB UI
@@ -47,7 +47,7 @@ SUB_FILES=	pkg-message
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	clonos
-GH_PROJECT=	cp
+GH_PROJECT=	control-pane
 GH_TAGNAME=	${GTAG}
 
 do-install:
