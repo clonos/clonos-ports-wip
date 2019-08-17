@@ -19,7 +19,7 @@ PLIST_FILES=	cbsd/modules/forms.d/clonos_database/auth_list.schema \
 		cbsd/modules/forms.d/clonos_database/sys_helpers_list.schema
 
 USE_GITHUB=	yes
-GH_TAGNAME=	50bac49
+GH_TAGNAME=	07e7546
 GH_ACCOUNT=	cbsd
 GH_PROJECT=	cbsd-plugin-clonos-database
 
