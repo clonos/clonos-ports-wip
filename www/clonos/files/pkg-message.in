@@ -55,7 +55,7 @@ pw groupmod cbsd -M www
 
 Defaults     env_keep += "workdir DIALOG NOCOLOR"
 Cmnd_Alias   WEB_CMD = %%PREFIX%%/bin/cbsd
-www   ALL=(ALL) NOPASSWD: WEB_CMD
+www   ALL=(ALL) NOPASSWD:SETENV: WEB_CMD
 
     And make sure the file permissions are safe:
 
