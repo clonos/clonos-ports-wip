@@ -1,9 +1,9 @@
 # $FreeBSD:$
 
 PORTNAME=	clonos
-PORTVERSION=	19.01
+PORTVERSION=	19.09
 CATEGORIES=	www
-GTAG=		9dca2e8
+GTAG=		b344f30
 DISTNAME=	control-pane-${GTAG}
 
 MAINTAINER=	olevole@olevole.ru
