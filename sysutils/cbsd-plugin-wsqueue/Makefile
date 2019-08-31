@@ -13,7 +13,7 @@ USES=		go
 
 SUB_FILES=	pkg-message
 
-PLIST_FILES=	cbsd/modules/cbsd_queue.d/wsclonos-sendqueue
+PLIST_FILES=	cbsd/modules/cbsd_queue.d/cbsd-plugin-wsqueue
 
 USE_GITHUB=	yes
 GH_TAGNAME=	c93543f
@@ -31,6 +31,6 @@ do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/cbsd
 	${MKDIR} ${STAGEDIR}${PREFIX}/cbsd/modules
 	${MKDIR} ${STAGEDIR}${PREFIX}/cbsd/modules/cbsd_queue.d
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/cbsd/modules/cbsd_queue.d/wsclonos-sendqueue
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/cbsd/modules/cbsd_queue.d/cbsd-plugin-wsqueue
 
 .include <bsd.port.mk>
