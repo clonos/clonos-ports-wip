@@ -22,7 +22,7 @@ RUN_DEPENDS=	bash:shells/bash \
 		supervisord:sysutils/py-supervisor \
 		cbsd:sysutils/cbsd \
 		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
-		${LOCALBASE}/cbsd/modules/cbsd_queue.d/wsclonos-sendqueue:sysutils/cbsd-plugin-wsqueue \
+		${LOCALBASE}/cbsd/modules/cbsd_queue.d/cbsd-plugin-wsqueue:sysutils/cbsd-plugin-wsqueue \
 		${LOCALBASE}/cbsd/modules/forms.d/clonos_database/initforms.sh:sysutils/cbsd-plugin-clonos-database \
 		${LOCALBASE}/cbsd/modules/vncterm.d/vncterm:sysutils/cbsd-plugin-vncterm \
 		${LOCALBASE}/cbsd/modules/convectix.d/securecmd:sysutils/cbsd-plugin-convectix \
