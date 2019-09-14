@@ -12,7 +12,7 @@ LICENSE=	BSD
 RUN_DEPENDS=	cbsd:sysutils/cbsd
 
 USE_GITHUB=	yes
-GH_TAGNAME=	4e66db2
+GH_TAGNAME=	f77395f
 GH_ACCOUNT=	cbsd
 GH_PROJECT=	cbsd-plugin-forms-php
 

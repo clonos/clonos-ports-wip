@@ -12,7 +12,7 @@ LICENSE=	BSD
 RUN_DEPENDS=	cbsd:sysutils/cbsd
 
 USE_GITHUB=	yes
-GH_TAGNAME=	05d1f74
+GH_TAGNAME=	b420e6e
 GH_ACCOUNT=	cbsd
 GH_PROJECT=	cbsd-plugin-forms-redis
 

@@ -12,7 +12,7 @@ LICENSE=	BSD
 RUN_DEPENDS=	cbsd:sysutils/cbsd
 
 USE_GITHUB=	yes
-GH_TAGNAME=	6f41fc9
+GH_TAGNAME=	62ef21e
 GH_ACCOUNT=	cbsd
 GH_PROJECT=	cbsd-plugin-forms-memcached
 

@@ -14,7 +14,7 @@ RUN_DEPENDS=	cbsd:sysutils/cbsd
 SUB_FILES=	pkg-message
 
 USE_GITHUB=	yes
-GH_TAGNAME=	cdda637
+GH_TAGNAME=	00ad2ae
 GH_ACCOUNT=	cbsd
 GH_PROJECT=	cbsd-plugin-puppet
 
