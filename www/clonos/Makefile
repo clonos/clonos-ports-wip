@@ -19,8 +19,6 @@ RUN_DEPENDS=	bash:shells/bash \
 		npm:www/npm \
 		nginx:www/nginx \
 		git:devel/git \
-		supervisord:sysutils/py-supervisor \
-		cbsd:sysutils/cbsd \
 		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
 		${LOCALBASE}/cbsd/modules/cbsd_queue.d/cbsd-plugin-wsqueue:sysutils/cbsd-plugin-wsqueue \
 		${LOCALBASE}/cbsd/modules/forms.d/clonos_database/initforms.sh:sysutils/cbsd-plugin-clonos-database \
@@ -36,9 +34,9 @@ RUN_DEPENDS=	bash:shells/bash \
 		sqlite3:databases/sqlite3 \
 		beanstalkd:net/beanstalkd
 
-USES=		php python
+USES=		php
 
-USE_PHP=	session zip sqlite3 pdo_sqlite opcache json hash
+USE_PHP=	session zip sqlite3 pdo_sqlite opcache json
 
 WRKSRC=		${WRKDIR}/web
 NO_BUILD=	yes
@@ -64,7 +62,6 @@ do-install:
 	${CHOWN} -R ${WWWOWN}:${WWWGRP} ${STAGEDIR}${WWWDIR}/public/novnc
 
 post-install:
-	${MKDIR} ${STAGEDIR}${PREFIX}/etc/supervisor.d /var/log/supervisor
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/sudoers.d
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/nginx/streams-enabled
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/nginx/conf.stream.d
@@ -81,18 +78,6 @@ post-install:
 
 	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/cbsdweb.conf.sample \
 		${STAGEDIR}${PREFIX}/etc/nginx/sites-enabled/cbsdweb.conf.clonos.sample
-
-	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/program_vnc2wss.conf.sample \
-		${STAGEDIR}${PREFIX}/etc/supervisor.d/program_vnc2wss.conf.clonos.sample
-
-	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/program_ws.conf.sample \
-		${STAGEDIR}${PREFIX}/etc/supervisor.d/program_ws.conf.clonos.sample
-
-	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/program_wsclonos.conf.sample \
-		${STAGEDIR}${PREFIX}/etc/supervisor.d/program_wsclonos.conf.clonos.sample
-
-	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/supervisord.conf.sample \
-		${STAGEDIR}${PREFIX}/etc/supervisord.conf.clonos.sample
 
 	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/php.ini.sample \
 		${STAGEDIR}${PREFIX}/etc/php.ini.clonos.sample
@@ -119,10 +104,6 @@ post-install:
 	@${ECHO_CMD} "@sample etc/nginx/nginx.conf.clonos.sample etc/nginx/nginx.conf" >> ${TMPPLIST}
 	@${ECHO_CMD} "@sample etc/nginx/sites-enabled/cbsdweb.conf.clonos.sample etc/nginx/sites-enabled/cbsdweb.conf" >> ${TMPPLIST}
 	@${ECHO_CMD} "@sample etc/sudoers_10_www.clonos.sample etc/sudoers.d/10_www" >> ${TMPPLIST}
-	@${ECHO_CMD} "@sample etc/supervisor.d/program_vnc2wss.conf.clonos.sample etc/supervisor.d/program_vnc2wss.conf" >> ${TMPPLIST}
-	@${ECHO_CMD} "@sample etc/supervisor.d/program_ws.conf.clonos.sample etc/supervisor.d/program_ws.conf" >> ${TMPPLIST}
-	@${ECHO_CMD} "@sample etc/supervisor.d/program_wsclonos.conf.clonos.sample etc/supervisor.d/program_wsclonos.conf" >> ${TMPPLIST}
-	@${ECHO_CMD} "@sample etc/supervisord.conf.clonos.sample etc/supervisord.conf" >> ${TMPPLIST}
 	@${ECHO_CMD} "@sample etc/php.ini.clonos.sample etc/php.ini" >> ${TMPPLIST}
 	@${ECHO_CMD} "@sample etc/php-fpm.conf.clonos.sample etc/php-fpm.conf" >> ${TMPPLIST}
 	@${ECHO_CMD} "@sample etc/cbsd-modules.conf.clonos.sample" >> ${TMPPLIST}
