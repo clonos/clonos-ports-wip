@@ -14,7 +14,7 @@ RUN_DEPENDS=	cbsd:sysutils/cbsd
 SUB_FILES=	pkg-message
 
 USE_GITHUB=	yes
-GH_TAGNAME=	00ad2ae
+GH_TAGNAME=	4c53017
 GH_ACCOUNT=	cbsd
 GH_PROJECT=	cbsd-plugin-puppet
 
@@ -30,6 +30,5 @@ do-install:
 post-install:
 	@${FIND} -s ${STAGEDIR}${TARGET_DIR} -not -type d | ${SORT} | \
 		${SED} -e 's#^${STAGEDIR}${PREFIX}/##' >> ${TMPPLIST}
-
 
 .include <bsd.port.mk>
