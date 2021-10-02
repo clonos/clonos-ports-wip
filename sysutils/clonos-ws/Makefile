@@ -7,6 +7,8 @@ CATEGORIES=	sysutils
 MAINTAINER=	olevole@olevole.ru
 COMMENT=	CBSD WEB UI
 
+USE_RC_SUBR=	clonos-ws
+
 LICENSE=	BSD
 RUN_DEPENDS=	cbsd:sysutils/cbsd
 USES=		go
@@ -20,8 +22,8 @@ GH_TAGNAME=	9df756c
 GH_ACCOUNT=	clonos
 GH_PROJECT=	clonos-ws
 
-GH_TUPLE=	go-logfmt:logfmt:v0.3.0:go_logfmt/src/github.com/go-logfmt/logfmt \
-		gorilla:websocket:v1.4.0:websocket/src/github.com/gorilla/websocket
+GH_TUPLE=	go-logfmt:logfmt:v0.5.1:go_logfmt/src/github.com/go-logfmt/logfmt \
+		gorilla:websocket:v1.4.2:websocket/src/github.com/gorilla/websocket
 
 post-extract:
 	${LN} -sf ${WRKSRC}/src ${WRKDIR}
@@ -29,6 +31,5 @@ post-extract:
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/clonos-ws
-
 
 .include <bsd.port.mk>

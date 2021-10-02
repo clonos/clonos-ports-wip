@@ -1,7 +1,7 @@
-TIMESTAMP = 1541610562
+TIMESTAMP = 1633191874
 SHA256 (clonos-clonos-ws-0.1-9df756c_GH0.tar.gz) = 9fc4f05ef5c1e7a2d04161c26df5552a057497cbf6fd8de4d23e56e8ed7299aa
 SIZE (clonos-clonos-ws-0.1-9df756c_GH0.tar.gz) = 2415
-SHA256 (go-logfmt-logfmt-v0.3.0_GH0.tar.gz) = 74a958064177fc33cc66c60ae118f95faf9f986bcab0465c47f40d8cad978fce
-SIZE (go-logfmt-logfmt-v0.3.0_GH0.tar.gz) = 11546
-SHA256 (gorilla-websocket-v1.4.0_GH0.tar.gz) = 2b5743c72bd0930c5a80e49c0138b5b7d27fa7c085efd0c86805cccfa7220c9d
-SIZE (gorilla-websocket-v1.4.0_GH0.tar.gz) = 50228
+SHA256 (go-logfmt-logfmt-v0.5.1_GH0.tar.gz) = a9a93f7cbb92a53a587fda196bc040264a625e76064495e95cb3e907f9a93499
+SIZE (go-logfmt-logfmt-v0.5.1_GH0.tar.gz) = 12115
+SHA256 (gorilla-websocket-v1.4.2_GH0.tar.gz) = 91937a36bc9e0da3c895c73d4cb74b2cdb1aff54ab21b0d0724000e7b5b85b84
+SIZE (gorilla-websocket-v1.4.2_GH0.tar.gz) = 54101
