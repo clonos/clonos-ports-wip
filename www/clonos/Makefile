@@ -1,9 +1,9 @@
 # $FreeBSD:$
 
 PORTNAME=	clonos
-PORTVERSION=	21.06
+PORTVERSION=	21.10
 CATEGORIES=	www
-GTAG=		f212aa2
+GTAG=		df8bd0c
 DISTNAME=	control-pane-${GTAG}
 
 MAINTAINER=	olevole@olevole.ru
@@ -22,12 +22,6 @@ RUN_DEPENDS=	bash:shells/bash \
 		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
 		${LOCALBASE}/cbsd/modules/cbsd_queue.d/cbsd-plugin-wsqueue:sysutils/cbsd-plugin-wsqueue \
 		${LOCALBASE}/cbsd/modules/forms.d/clonos_database/initforms.sh:sysutils/cbsd-plugin-clonos-database \
-		${LOCALBASE}/cbsd/modules/vncterm.d/vncterm:sysutils/cbsd-plugin-vncterm \
-		${LOCALBASE}/cbsd/modules/convectix.d/securecmd:sysutils/cbsd-plugin-convectix \
-		${LOCALBASE}/cbsd/modules/puppet.d/puppet:sysutils/cbsd-plugin-puppet \
-		${LOCALBASE}/cbsd/modules/forms.d/memcached/initforms.sh:sysutils/cbsd-plugin-forms-memcached \
-		${LOCALBASE}/cbsd/modules/forms.d/redis/initforms.sh:sysutils/cbsd-plugin-forms-redis \
-		${LOCALBASE}/cbsd/modules/forms.d/php/initforms.sh:sysutils/cbsd-plugin-forms-php \
 		${LOCALBASE}/bin/clonos-ws:sysutils/clonos-ws \
 		node:www/node \
 		sudo:security/sudo \

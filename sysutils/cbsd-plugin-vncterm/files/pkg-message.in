@@ -1,3 +1,0 @@
-Post Installation:
-
-* Please add 'vncterm.d' into ~cbsd/etc/modules.conf to enable vncterm plugin
