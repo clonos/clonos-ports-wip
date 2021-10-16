@@ -53,8 +53,8 @@ pw groupmod cbsd -M www
 [*] To execute CBSD commands, let the www user run CBSD through sudo. Please make
     sure you have %%PREFIX%%/etc/sudoers.d/10_www with follow content:
 
-Defaults     env_keep += "workdir DIALOG NOCOLOR"
-Cmnd_Alias   WEB_CMD = %%PREFIX%%/bin/cbsd
+Defaults     env_keep += "workdir DIALOG NOCOLOR CBSD_RNODE"
+Cmnd_Alias   WEB_CMD = /usr/local/bin/cbsd
 www   ALL=(ALL) NOPASSWD:SETENV: WEB_CMD
 
     And make sure the file permissions are safe:
