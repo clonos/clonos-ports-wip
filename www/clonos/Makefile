@@ -19,7 +19,6 @@ RUN_DEPENDS=	bash:shells/bash \
 		git:devel/git \
 		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
 		${LOCALBASE}/cbsd/modules/cbsd_queue.d/cbsd-plugin-wsqueue:sysutils/cbsd-plugin-wsqueue \
-		${LOCALBASE}/cbsd/modules/forms.d/clonos_database/initforms.sh:sysutils/cbsd-plugin-clonos-database \
 		${LOCALBASE}/bin/clonos-ws:sysutils/clonos-ws \
 		node:www/node \
 		sudo:security/sudo \

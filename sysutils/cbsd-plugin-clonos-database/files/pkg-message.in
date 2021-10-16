@@ -1,3 +1,0 @@
-Post Installation:
-
-* Please init database via: sh /usr/local/cbsd/modules/forms.d/clonos_database/initforms.sh
