@@ -1,5 +1,3 @@
-# $FreeBSD:$
-
 PORTNAME=	clonos-ws
 PORTVERSION=	0.1
 CATEGORIES=	sysutils
@@ -7,11 +5,13 @@ CATEGORIES=	sysutils
 MAINTAINER=	olevole@olevole.ru
 COMMENT=	CBSD WEB UI
 
-USE_RC_SUBR=	clonos-ws
-
 LICENSE=	BSD
+
 RUN_DEPENDS=	cbsd:sysutils/cbsd
+
 USES=		go
+
+USE_RC_SUBR=	clonos-ws
 
 SUB_FILES=	pkg-message
 

@@ -1,9 +1,6 @@
-# $FreeBSD:$
-
 PORTNAME=	clonos
 PORTVERSION=	21.10
 CATEGORIES=	www
-GTAG=		407773a
 DISTNAME=	control-pane-${GTAG}
 
 MAINTAINER=	olevole@olevole.ru
@@ -29,6 +26,8 @@ RUN_DEPENDS=	bash:shells/bash \
 		beanstalkd:net/beanstalkd
 
 USES=		php
+
+USE_RC_SUBR=	clonos-node-ws
 
 USE_PHP=	session zip sqlite3 pdo_sqlite opcache json
 

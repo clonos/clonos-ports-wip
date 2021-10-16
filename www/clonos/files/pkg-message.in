@@ -62,36 +62,18 @@ www   ALL=(ALL) NOPASSWD:SETENV: WEB_CMD
 chown root:wheel %%PREFIX%%/etc/sudoers.d/10_www
 chmod 0440 %%PREFIX%%/etc/sudoers.d/10_www
 
-[*] Change %%PREFIX%%/etc/supervisord.conf to:
+[*] Enable and start websocket daemon:
 
-[unix_http_server]
-file=/var/run/supervisor.sock
-chmod=0777
-chown=nobody:nobody
-[supervisorctl]
-serverurl=unix:///var/run/supervisor.sock
-[supervisord]
-logfile=/var/log/supervisor/supervisord.log
-pidfile=/var/run/supervisor/supervisord.pid
-nodaemon=false
-minfds=1024
-minprocs=200
-umask=022
-strip_ansi=false
-[rpcinterface:supervisor]
-supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
-[include]
-files=%%PREFIX%%/etc/supervisor.d/*.conf
+service clonos-ws enable
+service clonos-ws restart
 
-    Or copy: cp %%PREFIX%%/etc/supervisord.conf.clonos.sample %%PREFIX%%/etc/supervisord.conf
 
-[*] Make sure %%PREFIX%%/etc/supervisor.d/program_wsclonos.conf have correct
-    path to CBSD workdir. Please check that line "environment=PATH.." in
-    %%PREFIX%%/etc/supervisor.d/program_wsclonos.conf pointed to ~cbsd path
-    in 'cbsd_workdir':
+[*] Enable and start ClonOS node daemon:
 
-    environment=PATH=[.skipp..],cbsd_workdir="/usr/jails"
-                                              ^^^^^^^^^^
+service clonos-node-ws enable
+service clonos-node-ws restart
+
+
 [*] Change %%PREFIX%%/etc/php.ini params:
 
 ..
