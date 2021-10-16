@@ -180,6 +180,11 @@ service cbsd-statsd-hoster restart
 service cbsd-statsd-jail restart
 service cbsd-statsd-bhyve restart
 
+  10) Install/upgrade noVNC via npm:
+
+cd /usr/local/www/clonos/public/novnc
+npm install .
+
 [*] Open the ClonOS UI in your web browser.
 
   Default login: 'admin', default password: 'admin'
