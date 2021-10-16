@@ -116,17 +116,16 @@ stream {
 
     fastcgi_param WORKDIR /usr/jails;
                           ^^^^^^^^^^
-[*] Enable nginx, php-fpm and supervisord to run at system startup:
+[*] Enable nginx and php-fpm to run at system startup:
 
 sysrc nginx_enable="YES"
 sysrc php_fpm_enable="YES"
 sysrc supervisord_enable="YES"
 
-[*] Start nginx, php-fpm and supervisord to run at system startup:
+[*] Start nginx and php-fpm:
 
 service nginx restart
 service php-fpm restart
-service supervisord restart
 
 [*] Configure CBSD:
 
