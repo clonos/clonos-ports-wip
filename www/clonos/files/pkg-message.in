@@ -116,11 +116,12 @@ stream {
 
     fastcgi_param WORKDIR /usr/jails;
                           ^^^^^^^^^^
-[*] Enable nginx and php-fpm to run at system startup:
+[*] Enable nginx, php-fpm and clonos_vnc2wss to run at system startup:
 
 sysrc nginx_enable="YES"
 sysrc php_fpm_enable="YES"
 sysrc supervisord_enable="YES"
+sysrc clonos_vnc2wss_enable="YES"
 
 [*] Start nginx and php-fpm:
 
@@ -184,6 +185,10 @@ service cbsd-statsd-bhyve restart
 
 cd /usr/local/www/clonos/public/novnc
 npm install .
+
+  11) Create symlink from python3 to valid python bin:
+
+ln -sf /usr/local/bin/python3.8 /usr/local/bin/python3
 
 [*] Open the ClonOS UI in your web browser.
 
