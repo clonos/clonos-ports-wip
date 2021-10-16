@@ -129,8 +129,29 @@ service php-fpm restart
 
 [*] Configure CBSD:
 
-  1)
-     ~cbsd/etc/modules.conf must have:
+  1) Install and compile vncterm module:
+
+cbsd module mode=install vncterm
+make -C /usr/local/cbsd/modules/vncterm.d
+
+  2) Install additional ConvectIX scripts module
+
+cbsd module mode=install convectix
+
+  3) Install Puppet module
+
+cbsd module mode=install puppet
+
+  4) Install ClonOS database module
+
+cbsd module mode=install clonos-database
+
+  5) Copy queue config file:
+
+cp -a /usr/local/cbsd/modules/cbsd_queue.d/etc-sample/cbsd_queue.conf ~cbsd/etc/
+
+  6) Add additional module name into ~cbsd/etc/modules, 
+     e.g. complete ~cbsd/etc/modules.conf must have:
 
 pkg.d
 bsdconf.d
@@ -142,15 +163,15 @@ vncterm.d
 
     Or copy: cp %%PREFIX%%/etc/cbsd-modules.conf.clonos.sample ~cbsd/etc/modules.conf
 
-  2) Re-run CBSD initenv to init modules:
+  7) Re-run CBSD initenv to init modules:
 
 cbsd initenv
 
-  3) Init web user database:
+  8) Init web user database:
 
-sh %%PREFIX%%/cbsd/modules/forms.d/clonos_database/initforms.sh
+sh %%PREFIX%%/cbsd/modules/clonos_database/initforms.sh
 
-  4) Configure and run CBSD RACCT stats daemon:
+  9) Configure and run CBSD RACCT stats daemon:
 
 sysrc cbsd_statsd_hoster_enable=YES
 sysrc cbsd_statsd_jail_enable=YES
