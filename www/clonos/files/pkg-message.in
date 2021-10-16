@@ -6,20 +6,24 @@ kern.racct.enable="1"
 
     into /boot/loader.conf and reboot host
 
+
 [*] Init CBSD workdir
 
     See https://www.bsdstore.ru/en/installing_cbsd.html#initenv for details
+
 
 [*] Ensure CBSD is started:
 
 sysrc cbsdd_enable=YES
 service cbsdd status || service cbsdd start
 
+
 [*] Configure and run beanstalkd:
 
 sysrc beanstalkd_flags="-l 127.0.0.1 -p 11300"
 sysrc beanstalkd_enable=YES
 service beanstalkd restart
+
 
 [*] Change in %%PREFIX%%/etc/php-fpm.conf events mechanism to BSD-specific.
     To do this, uncomment and edit the events.mechanism parameter to:
@@ -30,6 +34,7 @@ events.mechanism = kqueue
 ..
 
     Or copy: cp %%PREFIX%%/etc/php-fpm.conf.clonos.sample %%PREFIX%%/etc/php-fpm.conf
+
 
 [*] Uncomment and change in %%PREFIX%%/etc/php-fpm.d/www.conf port to Unix socket and
     set's correct access permission:
@@ -46,6 +51,7 @@ listen.mode = 0660
 
     Or copy: cp %%PREFIX%%/etc/php-fpm.d/www-php-fpm.conf.clonos.sample %%PREFIX%%/etc/php-fpm.d/www.conf
 
+
 [*] Add "www" user to "cbsd" group:
 
 pw groupmod cbsd -M www
@@ -61,6 +67,9 @@ www   ALL=(ALL) NOPASSWD:SETENV: WEB_CMD
 
 chown root:wheel %%PREFIX%%/etc/sudoers.d/10_www
 chmod 0440 %%PREFIX%%/etc/sudoers.d/10_www
+
+    Or copy: cp %%PREFIX%%/etc/sudoers_10_www.clonos.sample cp %%PREFIX%%/etc/sudoers.d/10_www
+
 
 [*] Enable and start websocket daemon:
 
@@ -89,6 +98,7 @@ opcache.enable=1
 
     Or copy: cp %%PREFIX%%/etc/php.ini.clonos.sample %%PREFIX%%/etc/php.ini
 
+
 [*] Configure NGINX. Make sure/merge this settings into
     %%PREFIX%%/etc/nginx/nginx.conf:
 
@@ -110,12 +120,14 @@ stream {
 
     Or copy: cp %%PREFIX%%/etc/nginx/nginx.conf.clonos.sample %%PREFIX%%/etc/nginx/nginx.conf
 
+
 [*] Make sure %%PREFIX%%/etc/nginx/sites-enabled/cbsdweb.conf
     have correct path to CBSD workdir. Please check that line "fastcgi_param WORKDIR.."
     in %%PREFIX%%/etc/nginx/sites-enabled/cbsdweb.conf pointed to ~cbsd path:
 
     fastcgi_param WORKDIR /usr/jails;
                           ^^^^^^^^^^
+
 [*] Enable nginx, php-fpm and clonos_vnc2wss to run at system startup:
 
 sysrc nginx_enable="YES"
@@ -123,10 +135,12 @@ sysrc php_fpm_enable="YES"
 sysrc supervisord_enable="YES"
 sysrc clonos_vnc2wss_enable="YES"
 
+
 [*] Start nginx and php-fpm:
 
 service nginx restart
 service php-fpm restart
+
 
 [*] Configure CBSD:
 
@@ -190,8 +204,10 @@ npm install .
 
 ln -sf /usr/local/bin/python3.8 /usr/local/bin/python3
 
+
 [*] Open the ClonOS UI in your web browser.
 
   Default login: 'admin', default password: 'admin'
+
 
 [*] Enjoy the ClonOS !
