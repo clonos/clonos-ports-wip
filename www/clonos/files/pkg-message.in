@@ -1,15 +1,16 @@
 ClonOS post installation setup:
 
-[*] Check for RACCT is enabled on the host, please add:
+[*] Check for RACCT is enabled on the host, please add kern.racct.enable
+    into /boot/loader.conf (and reboot the host):
 
-kern.racct.enable="1"
-
-    into /boot/loader.conf and reboot host
+echo 'kern.racct.enable="1"' >> /boot/loader.conf
 
 
 [*] Init CBSD workdir
 
-    See https://www.bsdstore.ru/en/installing_cbsd.html#initenv for details
+    See https://www.bsdstore.ru/en/installing_cbsd.html#initenv for details:
+
+env workdir=/usr/jails %%PREFIX%%/cbsd/sudoexec/initenv
 
 
 [*] Ensure CBSD is started:
@@ -60,7 +61,7 @@ pw groupmod cbsd -M www
     sure you have %%PREFIX%%/etc/sudoers.d/10_www with follow content:
 
 Defaults     env_keep += "workdir DIALOG NOCOLOR CBSD_RNODE"
-Cmnd_Alias   WEB_CMD = /usr/local/bin/cbsd
+Cmnd_Alias   WEB_CMD = %%PREFIX%%/bin/cbsd
 www   ALL=(ALL) NOPASSWD:SETENV: WEB_CMD
 
     And make sure the file permissions are safe:
@@ -147,7 +148,7 @@ service php-fpm restart
   1) Install and compile vncterm module:
 
 cbsd module mode=install vncterm
-make -C /usr/local/cbsd/modules/vncterm.d
+make -C %%PREFIX%%/cbsd/modules/vncterm.d
 
   2) Install additional ConvectIX scripts module
 
@@ -159,11 +160,11 @@ cbsd module mode=install puppet
 
   4) Install ClonOS database module
 
-cbsd module mode=install clonos-database
+cbsd module mode=install clonosdb
 
   5) Copy queue config file:
 
-cp -a /usr/local/cbsd/modules/cbsd_queue.d/etc-sample/cbsd_queue.conf ~cbsd/etc/
+cp -a %%PREFIX%%/cbsd/modules/cbsd_queue.d/etc-sample/cbsd_queue.conf ~cbsd/etc/
 
   6) Add additional module name into ~cbsd/etc/modules, 
      e.g. complete ~cbsd/etc/modules.conf must have:
@@ -184,7 +185,7 @@ cbsd initenv
 
   8) Init web user database:
 
-sh %%PREFIX%%/cbsd/modules/clonos_database/initforms.sh
+cbsd clonosdb
 
   9) Configure and run CBSD RACCT stats daemon:
 
@@ -197,7 +198,7 @@ service cbsd-statsd-bhyve restart
 
   10) Create symlink from python3 to valid python bin:
 
-ln -sf /usr/local/bin/python3.8 /usr/local/bin/python3
+ln -sf %%PREFIX%%/bin/python3.9 %%PREFIX%%/bin/python3
 
 
 [*] Open the ClonOS UI in your web browser.
