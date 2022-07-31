@@ -41,12 +41,13 @@ load_rc_config $name
 : ${clonos_node_ws_facility:="local0"}
 : ${clonos_node_ws_priority:="alert"}
 
-pidfile="/var/run/clonos_node_ws/daemon.pid"
-pidfile_daemon="/var/run/clonos_node_ws/daemon_command.pid"
+pidfile="/var/run/${name}/${name}.pid"
+daemon_pidfile="/var/run/${name}/${name}-daemon.pid"
+logdir="/var/log/${name}"
+logfile="${logdir}/${name}.log"
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/node"
-command_args="-r -P ${pidfile_daemon} -p ${pidfile} -S -l ${clonos_node_ws_facility} -s ${clonos_node_ws_priority} -T ${name} ${procname} %%PREFIX%%/www/clonos/node/wsClonos.js"
-
+command_args="-r -P ${daemon_pidfile} -p ${pidfile} -o ${logfile} -S -l ${clonos_node_ws_facility} -s ${clonos_node_ws_priority} -T ${name} ${procname} %%PREFIX%%/www/clonos/node/wsClonos.js"
 start_precmd="clonos_node_ws_precmd"
 stop_cmd=${name}_stop
 status_cmd="${name}_status"
@@ -62,8 +63,12 @@ clonos_node_ws_precmd()
 
 	cd ${clonos_node_ws_directory}
 
-	if [ ! -d "/var/run/clonos_node_ws" ]; then
-		install -d -g ${clonos_node_ws_group} -o ${clonos_node_ws_user} -m 0700 -- "/var/run/clonos_node_ws"
+	[ ! -d ${logdir} ] && mkdir -p ${logdir}
+	touch ${logfile}
+	chown ${clonos_node_ws_user}:${clonos_node_ws_group} ${logdir} ${logfile}
+
+	if [ ! -d "/var/run/${name}" ]; then
+		install -d -g ${clonos_node_ws_group} -o ${clonos_node_ws_user} -m 0700 -- "/var/run/${name}"
 	fi
 
 	if [ ! -e "${pidfile}" ]; then
@@ -104,16 +109,16 @@ clonos_node_ws_stop()
 		rm -f ${pidfile}
 	fi
 
-	if [ -f "${pidfile_daemon}" ]; then
-		pids=$( pgrep -F ${pidfile_daemon} 2>&1 )
+	if [ -f "${daemon_pidfile}" ]; then
+		pids=$( pgrep -F ${daemon_pidfile} 2>&1 )
 		_err=$?
 		if [ ${_err} -eq  0 ]; then
-			kill -9 ${pids} && /bin/rm -f ${pidfile_daemon}
+			kill -9 ${pids} && /bin/rm -f ${daemon_pidfile}
 		else
 			echo "pgrep: ${pids}"
 			#return ${_err}
 		fi
-		rm -f ${pidfile_daemon}
+		rm -f ${daemon_pidfile}
 	fi
 
 	return ${_err}
