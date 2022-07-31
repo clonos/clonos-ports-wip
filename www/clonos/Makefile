@@ -1,7 +1,7 @@
 PORTNAME=	clonos
 PORTVERSION=	22.08
 CATEGORIES=	www
-GTAG=		33b0f06
+GTAG=		f1f91d9
 DISTNAME=	control-pane-${GTAG}
 
 MAINTAINER=	olevole@olevole.ru
