@@ -195,12 +195,7 @@ service cbsd-statsd-hoster restart
 service cbsd-statsd-jail restart
 service cbsd-statsd-bhyve restart
 
-  10) Install/upgrade noVNC via npm:
-
-cd /usr/local/www/clonos/public/novnc
-npm install .
-
-  11) Create symlink from python3 to valid python bin:
+  10) Create symlink from python3 to valid python bin:
 
 ln -sf /usr/local/bin/python3.8 /usr/local/bin/python3
 
