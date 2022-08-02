@@ -29,7 +29,7 @@ USES=		php
 
 USE_RC_SUBR=	clonos-node-ws
 
-USE_PHP=	session zip sqlite3 pdo_sqlite opcache json
+USE_PHP=	session zip sqlite3 pdo_sqlite opcache json curl
 
 WRKSRC=		${WRKDIR}/web
 NO_BUILD=	yes
