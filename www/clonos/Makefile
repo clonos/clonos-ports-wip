@@ -14,7 +14,7 @@ LIB_DEPENDS=	libvncserver.so:net/libvncserver \
 		libsqlite3.so:databases/sqlite3
 
 RUN_DEPENDS=	bash:shells/bash \
-		npm:www/npm \
+		npm:www/npm-node18 \
 		nginx:www/nginx \
 		git:devel/git \
 		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
