@@ -52,6 +52,7 @@ do-install:
 	${CP} -a ${WRKDIR}/control-pane-${GTAG}/media_import ${STAGEDIR}${WWWDIR}
 	${CP} -a ${WRKDIR}/control-pane-${GTAG}/php ${STAGEDIR}${WWWDIR}
 	${CP} -a ${WRKDIR}/control-pane-${GTAG}/public ${STAGEDIR}${WWWDIR}
+	${CP} -a ${WRKDIR}/control-pane-${GTAG}/version ${STAGEDIR}${WWWDIR}
 	${CHOWN} -R ${WWWOWN}:${WWWGRP} ${STAGEDIR}${WWWDIR}/public/novnc
 
 post-install:
