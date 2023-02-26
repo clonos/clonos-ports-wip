@@ -1,7 +1,7 @@
 PORTNAME=	clonos
 PORTVERSION=	23.02
 CATEGORIES=	www
-GTAG=		298f5dd
+GTAG=		fb139b9
 DISTNAME=	control-pane-${GTAG}
 
 MAINTAINER=	olevole@olevole.ru
@@ -29,7 +29,7 @@ USES=		php
 
 USE_RC_SUBR=	clonos-node-ws
 
-USE_PHP=	session zip sqlite3 pdo_sqlite opcache json curl
+USE_PHP=	session zip sqlite3 pdo_sqlite opcache json curl filter
 
 WRKSRC=		${WRKDIR}/web
 NO_BUILD=	yes
