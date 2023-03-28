@@ -22,8 +22,8 @@ GH_TAGNAME=	9df756c
 GH_ACCOUNT=	clonos
 GH_PROJECT=	clonos-ws
 
-GH_TUPLE=	go-logfmt:logfmt:v0.5.1:go_logfmt/src/github.com/go-logfmt/logfmt \
-		gorilla:websocket:v1.4.2:websocket/src/github.com/gorilla/websocket
+GH_TUPLE=	go-logfmt:logfmt:v0.6.0:go_logfmt/src/github.com/go-logfmt/logfmt \
+		gorilla:websocket:v1.5.0:websocket/src/github.com/gorilla/websocket
 
 post-extract:
 	${LN} -sf ${WRKSRC}/src ${WRKDIR}
