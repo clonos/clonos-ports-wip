@@ -86,6 +86,7 @@ service clonos-node-ws restart
 
 [*] Change %%PREFIX%%/etc/php.ini params:
 
+max_execution_time = 1200
 ..
 memory_limit = 256M
 ..
