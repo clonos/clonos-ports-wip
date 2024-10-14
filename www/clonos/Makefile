@@ -1,7 +1,7 @@
 PORTNAME=	clonos
-PORTVERSION=	23.04.05
+PORTVERSION=	24.10.00
 CATEGORIES=	www
-GTAG=		ebe610a
+GTAG=		fcc3153
 DISTNAME=	control-pane-${GTAG}
 
 MAINTAINER=	olevole@olevole.ru
@@ -14,7 +14,7 @@ LIB_DEPENDS=	libvncserver.so:net/libvncserver \
 		libsqlite3.so:databases/sqlite3
 
 RUN_DEPENDS=	bash:shells/bash \
-		npm:www/npm-node18 \
+		npm:www/npm-node20 \
 		nginx:www/nginx \
 		git:devel/git \
 		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
