@@ -1,3 +1,2 @@
-CBSD WEB UI
-
-WWW: https://clonos.convectix.com/
+ClonOS offers a complete web UI for easily controlling, deploying and managing
+FreeBSD jails containers and Bhyve/Xen/QEMU hypervisor virtual environments.

@@ -1,11 +1,11 @@
 PORTNAME=	clonos
-PORTVERSION=	24.10.00
+PORTVERSION=	24.11.00
 CATEGORIES=	www
-GTAG=		fcc3153
-DISTNAME=	control-pane-${GTAG}
+DISTNAME=	control-pane-ed82241
 
-MAINTAINER=	olevole@olevole.ru
+MAINTAINER=	clonos@convectix.com
 COMMENT=	CBSD WEB UI
+WWW=		https://github.com/clonos/control-pane
 
 LICENSE=	BSD
 
@@ -14,21 +14,23 @@ LIB_DEPENDS=	libvncserver.so:net/libvncserver \
 		libsqlite3.so:databases/sqlite3
 
 RUN_DEPENDS=	bash:shells/bash \
-		npm:www/npm-node20 \
+		npm:www/npm-node23 \
 		nginx:www/nginx \
 		git:devel/git \
 		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
 		${LOCALBASE}/cbsd/modules/cbsd_queue.d/cbsd-plugin-wsqueue:sysutils/cbsd-plugin-wsqueue \
 		${LOCALBASE}/bin/clonos-ws:sysutils/clonos-ws \
-		node:www/node \
+		node:www/node23 \
 		sudo:security/sudo \
 		sqlite3:databases/sqlite3 \
 		beanstalkd:net/beanstalkd
 
 USES=		php
-
+USE_GITHUB=	yes
+GH_ACCOUNT=	clonos
+GH_PROJECT=	control-pane
+GH_TAGNAME=	ed82241
 USE_RC_SUBR=	clonos-node-ws
-
 USE_PHP=	session zip sqlite3 pdo_sqlite opcache json curl filter
 
 WRKSRC=		${WRKDIR}/web
@@ -36,17 +38,12 @@ NO_BUILD=	yes
 
 SUB_FILES=	pkg-message
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	clonos
-GH_PROJECT=	control-pane
-GH_TAGNAME=	${GTAG}
-
 do-install:
 	@${MKDIR} ${STAGEDIR}${WWWDIR}
 	@${MKDIR} ${STAGEDIR}/root/bin
 	@${MKDIR} ${STAGEDIR}/var/db/clonos
-	@${MKDIR} -p ${STAGEDIR}/usr/local/etc/nginx/streams-enabled
-	@${MKDIR} -p ${STAGEDIR}/usr/local/etc/nginx/sites-enabled/
+	@${MKDIR} ${STAGEDIR}/usr/local/etc/nginx/streams-enabled
+	@${MKDIR} ${STAGEDIR}/usr/local/etc/nginx/sites-enabled/
 	${CP} -a ${WRKDIR}/control-pane-${GTAG}/logs ${STAGEDIR}${WWWDIR}
 	${CP} -a ${WRKDIR}/control-pane-${GTAG}/node ${STAGEDIR}${WWWDIR}
 	${CP} -a ${WRKDIR}/control-pane-${GTAG}/media_import ${STAGEDIR}${WWWDIR}
