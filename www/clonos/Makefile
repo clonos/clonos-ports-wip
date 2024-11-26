@@ -44,12 +44,12 @@ do-install:
 	@${MKDIR} ${STAGEDIR}/var/db/clonos
 	@${MKDIR} ${STAGEDIR}/usr/local/etc/nginx/streams-enabled
 	@${MKDIR} ${STAGEDIR}/usr/local/etc/nginx/sites-enabled/
-	${CP} -a ${WRKDIR}/control-pane-${GTAG}/logs ${STAGEDIR}${WWWDIR}
-	${CP} -a ${WRKDIR}/control-pane-${GTAG}/node ${STAGEDIR}${WWWDIR}
-	${CP} -a ${WRKDIR}/control-pane-${GTAG}/media_import ${STAGEDIR}${WWWDIR}
-	${CP} -a ${WRKDIR}/control-pane-${GTAG}/php ${STAGEDIR}${WWWDIR}
-	${CP} -a ${WRKDIR}/control-pane-${GTAG}/public ${STAGEDIR}${WWWDIR}
-	${CP} -a ${WRKDIR}/control-pane-${GTAG}/version ${STAGEDIR}${WWWDIR}
+	${CP} -a ${WRKDIR}/control-pane-${GH_TAGNAME}/logs ${STAGEDIR}${WWWDIR}
+	${CP} -a ${WRKDIR}/control-pane-${GH_TAGNAME}/node ${STAGEDIR}${WWWDIR}
+	${CP} -a ${WRKDIR}/control-pane-${GH_TAGNAME}/media_import ${STAGEDIR}${WWWDIR}
+	${CP} -a ${WRKDIR}/control-pane-${GH_TAGNAME}/php ${STAGEDIR}${WWWDIR}
+	${CP} -a ${WRKDIR}/control-pane-${GH_TAGNAME}/public ${STAGEDIR}${WWWDIR}
+	${CP} -a ${WRKDIR}/control-pane-${GH_TAGNAME}/version ${STAGEDIR}${WWWDIR}
 	${CHOWN} -R ${WWWOWN}:${WWWGRP} ${STAGEDIR}${WWWDIR}/public/novnc
 
 post-install:
@@ -59,27 +59,27 @@ post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/nginx/sites-enabled
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/php-fpm.d
 	${MKDIR} /var/log/nginx ${STAGEDIR}${PREFIX}/etc/nginx/streams-enabled ${STAGEDIR}${PREFIX}/etc/nginx/sites-enabled
-	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/nginx.conf.sample \
+	${INSTALL_DATA} ${WRKDIR}/control-pane-${GH_TAGNAME}/examples/nginx.conf.sample \
 		${STAGEDIR}${PREFIX}/etc/nginx/nginx.conf.clonos.sample
 
-	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/10_www.sample \
+	${INSTALL_DATA} ${WRKDIR}/control-pane-${GH_TAGNAME}/examples/10_www.sample \
 		${STAGEDIR}${PREFIX}/etc/sudoers_10_www.clonos.sample
 
 	${CHMOD} 0440 ${STAGEDIR}${PREFIX}/etc/sudoers_10_www.clonos.sample
 
-	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/cbsdweb.conf.sample \
+	${INSTALL_DATA} ${WRKDIR}/control-pane-${GH_TAGNAME}/examples/cbsdweb.conf.sample \
 		${STAGEDIR}${PREFIX}/etc/nginx/sites-enabled/cbsdweb.conf.clonos.sample
 
-	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/php.ini.sample \
+	${INSTALL_DATA} ${WRKDIR}/control-pane-${GH_TAGNAME}/examples/php.ini.sample \
 		${STAGEDIR}${PREFIX}/etc/php.ini.clonos.sample
 
-	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/www-php-fpm.conf.sample \
+	${INSTALL_DATA} ${WRKDIR}/control-pane-${GH_TAGNAME}/examples/www-php-fpm.conf.sample \
 		${STAGEDIR}${PREFIX}/etc/php-fpm.d/www-php-fpm.conf.clonos.sample
 
-	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/php-fpm.conf.sample \
+	${INSTALL_DATA} ${WRKDIR}/control-pane-${GH_TAGNAME}/examples/php-fpm.conf.sample \
 		${STAGEDIR}${PREFIX}/etc/php-fpm.conf.clonos.sample
 
-	${INSTALL_DATA} ${WRKDIR}/control-pane-${GTAG}/examples/cbsd-modules.conf.sample \
+	${INSTALL_DATA} ${WRKDIR}/control-pane-${GH_TAGNAME}/examples/cbsd-modules.conf.sample \
 		${STAGEDIR}${PREFIX}/etc/cbsd-modules.conf.clonos.sample
 
 	@${ECHO_CMD} "@owner ${WWWOWN}" >> ${TMPPLIST}
