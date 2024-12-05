@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # PROVIDE: clonos_ws
-# REQUIRE: NETWORK
-# BEFORE: DAEMON
+# REQUIRE: NETWORK cbsd_statsd_jail cbsd_statsd_hoster cbsd_statsd_bhyve beanstalkd php_fpm
+# BEFORE:  securelevel
 
 . /etc/rc.subr
 
