@@ -1,7 +1,7 @@
 PORTNAME=	clonos
-PORTVERSION=	24.12.01
+PORTVERSION=	25.10.01
 CATEGORIES=	www
-DISTNAME=	control-pane-32929b9
+DISTNAME=	control-pane-e6fb291
 
 MAINTAINER=	clonos@convectix.com
 COMMENT=	CBSD WEB UI
@@ -14,13 +14,13 @@ LIB_DEPENDS=	libvncserver.so:net/libvncserver \
 		libsqlite3.so:databases/sqlite3
 
 RUN_DEPENDS=	bash:shells/bash \
-		npm:www/npm-node23 \
+		npm:www/npm-node24 \
 		nginx:www/nginx \
 		git:devel/git \
 		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
 		${LOCALBASE}/cbsd/modules/cbsd_queue.d/cbsd-plugin-wsqueue:sysutils/cbsd-plugin-wsqueue \
 		${LOCALBASE}/bin/clonos-ws:sysutils/clonos-ws \
-		node:www/node23 \
+		node:www/node24 \
 		sudo:security/sudo \
 		sqlite3:databases/sqlite3 \
 		beanstalkd:net/beanstalkd
@@ -29,7 +29,7 @@ USES=		php
 USE_GITHUB=	yes
 GH_ACCOUNT=	clonos
 GH_PROJECT=	control-pane
-GH_TAGNAME=	32929b9
+GH_TAGNAME=	e6fb291
 USE_RC_SUBR=	clonos-node-ws
 USE_PHP=	session zip sqlite3 pdo_sqlite opcache json curl filter
 
