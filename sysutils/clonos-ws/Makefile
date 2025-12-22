@@ -18,7 +18,7 @@ SUB_FILES=	pkg-message
 PLIST_FILES=	bin/clonos-ws
 
 USE_GITHUB=	yes
-GH_TAGNAME=	9df756c
+GH_TAGNAME=	0faefbf
 GH_ACCOUNT=	clonos
 GH_PROJECT=	clonos-ws
 
