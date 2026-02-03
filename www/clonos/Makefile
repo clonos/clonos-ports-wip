@@ -1,9 +1,9 @@
 PORTNAME=	clonos
-PORTVERSION=	25.10.01
+PORTVERSION=	26.02.01
 CATEGORIES=	www
-DISTNAME=	control-pane-e6fb291
+DISTNAME=	control-pane-6f5d4a7
 
-MAINTAINER=	clonos@convectix.com
+MAINTAINER=	fbsd-ports@convectix.com
 COMMENT=	CBSD WEB UI
 WWW=		https://github.com/clonos/control-pane
 
@@ -29,7 +29,7 @@ USES=		php
 USE_GITHUB=	yes
 GH_ACCOUNT=	clonos
 GH_PROJECT=	control-pane
-GH_TAGNAME=	e6fb291
+GH_TAGNAME=	6f5d4a7
 USE_RC_SUBR=	clonos-node-ws
 USE_PHP=	session zip sqlite3 pdo_sqlite opcache json curl filter
 

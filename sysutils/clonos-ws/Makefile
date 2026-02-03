@@ -2,7 +2,7 @@ PORTNAME=	clonos-ws
 PORTVERSION=	0.1
 CATEGORIES=	sysutils
 
-MAINTAINER=	olevole@olevole.ru
+MAINTAINER=	fbsd-ports@convectix.com
 COMMENT=	CBSD WEB UI
 
 LICENSE=	BSD
