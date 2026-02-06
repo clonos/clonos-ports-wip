@@ -29,7 +29,7 @@ USES=		php
 USE_GITHUB=	yes
 GH_ACCOUNT=	clonos
 GH_PROJECT=	control-pane
-GH_TAGNAME=	6f5d4a7
+GH_TAGNAME=	11695a9
 USE_RC_SUBR=	clonos-node-ws
 USE_PHP=	session zip sqlite3 pdo_sqlite opcache json curl filter
 
