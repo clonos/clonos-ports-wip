@@ -10,6 +10,8 @@ LICENSE=	BSD2CLAUSE
 
 USES=		go
 
+USE_RC_SUBR=	clonos-ws
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	clonos
 GH_PROJECT=	clonos-ws
