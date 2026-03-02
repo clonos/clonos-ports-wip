@@ -4,11 +4,10 @@ PORTNAME=	cbsd-plugin-wsqueue
 PORTVERSION=	0.2
 CATEGORIES=	sysutils
 
-MAINTAINER=	olevole@olevole.ru
+MAINTAINER=	fbsd-ports@convectix.com
 COMMENT=	CBSD WEB UI
 
 LICENSE=	BSD
-RUN_DEPENDS=	cbsd:sysutils/cbsd
 USES=		go
 
 SUB_FILES=	pkg-message

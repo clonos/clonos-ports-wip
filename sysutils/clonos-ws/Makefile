@@ -1,35 +1,28 @@
 PORTNAME=	clonos-ws
-PORTVERSION=	0.1
+DISTVERSION=	0.1
 CATEGORIES=	sysutils
 
 MAINTAINER=	fbsd-ports@convectix.com
-COMMENT=	CBSD WEB UI
+COMMENT=	ClonOS WebSocket Server
+WWW=		https://github.com/clonos/clonos-ws
 
-LICENSE=	BSD
-
-RUN_DEPENDS=	cbsd:sysutils/cbsd
+LICENSE=	BSD2CLAUSE
 
 USES=		go
 
-USE_RC_SUBR=	clonos-ws
-
-SUB_FILES=	pkg-message
-
-PLIST_FILES=	bin/clonos-ws
-
 USE_GITHUB=	yes
-GH_TAGNAME=	0faefbf
 GH_ACCOUNT=	clonos
 GH_PROJECT=	clonos-ws
+GH_TAGNAME=	045a274
 
-GH_TUPLE=	go-logfmt:logfmt:v0.6.0:go_logfmt/src/github.com/go-logfmt/logfmt \
-		gorilla:websocket:v1.5.0:websocket/src/github.com/gorilla/websocket
+GH_TUPLE=	gorilla:websocket:v1.5.3:gorilla_websocket/vendor/github.com/gorilla/websocket
 
-post-extract:
-	${LN} -sf ${WRKSRC}/src ${WRKDIR}
-	${LN} -sf ${WRKSRC} ${WRKDIR}/src/${PORTNAME}
+PLIST_FILES=	bin/clonos-ws \
+	"@sample etc/clonos-channel.json.sample"
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/clonos-ws
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/clonos-ws ${STAGEDIR}${PREFIX}/bin/clonos-ws
+	${INSTALL_DATA} ${WRKSRC}/clonos-channel.json \
+	${STAGEDIR}${PREFIX}/etc/clonos-channel.json.sample
 
 .include <bsd.port.mk>
